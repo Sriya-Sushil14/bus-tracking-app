@@ -1,0 +1,36 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-search',
+  standalone: true,
+  imports: [RouterLink],
+  template: `
+    <div class="p-8 bg-white rounded-2xl shadow-xl">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">How would you like to search?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <button 
+          [routerLink]="['/find-by-route']"
+          class="flex flex-col items-center p-6 bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 rounded-xl transition duration-200 transform hover:shadow-xl"
+        >
+          <span class="text-xl font-semibold text-blue-700">Find by Route</span>
+          <span class="text-sm text-gray-500 mt-1">Search by specific path or destination name.</span>
+        </button>
+        
+        <button 
+          [routerLink]="['/find-by-number']"
+          class="flex flex-col items-center p-6 bg-green-50 hover:bg-green-100 border-2 border-green-200 rounded-xl transition duration-200 transform hover:shadow-xl"
+        >
+          <span class="text-xl font-semibold text-green-700">Find by Number</span>
+          <span class="text-sm text-gray-500 mt-1">Search using an exact route number or code.</span>
+        </button>
+        
+      </div>
+      <button [routerLink]="['/']" class="mt-6 text-sm text-gray-500 hover:text-indigo-600">
+          ← Back to Home
+      </button>
+    </div>
+  `
+})
+export class SearchComponent {}
