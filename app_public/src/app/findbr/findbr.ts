@@ -1,22 +1,39 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-find-br',
+  selector: 'app-findbr',
   standalone: true,
-  imports: [RouterLink],
+  imports: [FormsModule],
   template: `
-    <div class="p-8 bg-white rounded-2xl shadow-xl w-full max-w-lg border-l-4 border-blue-500">
-      <h2 class="text-3xl font-bold text-blue-700 mb-4">Find By Route</h2>
-      <p class="text-gray-600 mb-6">
-        **TODO:** Implement the search form and display results here. 
-        This page is successfully routed at **/find-by-route**.
-      </p>
-      
-      <button [routerLink]="['/search']" class="text-sm text-blue-500 hover:text-blue-700 font-medium">
-        ← Back to Search Options
+    <div class="flex flex-col items-center justify-center p-10 bg-white rounded-2xl shadow-xl max-w-lg mx-auto">
+      <h2 class="text-3xl font-bold text-blue-700 mb-6">Find by Route</h2>
+
+      <input [(ngModel)]="from" placeholder="Enter starting location"
+        class="w-full mb-4 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400" />
+
+      <input [(ngModel)]="to" placeholder="Enter destination"
+        class="w-full mb-4 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400" />
+
+      <button (click)="showMap()"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition transform hover:scale-105">
+        Search
       </button>
+
+      <div *ngIf="mapVisible" class="mt-6 border border-gray-300 rounded-xl w-full h-64 flex items-center justify-center bg-gray-100">
+        <p class="text-gray-600">🗺️ Showing route from <b>{{ from }}</b> to <b>{{ to }}</b></p>
+      </div>
     </div>
   `
 })
-export class FindBrComponent {}
+export class FindBrComponent {
+  from = '';
+  to = '';
+  mapVisible = false;
+
+  showMap() {
+    if (this.from && this.to) {
+      this.mapVisible = true;
+    }
+  }
+}

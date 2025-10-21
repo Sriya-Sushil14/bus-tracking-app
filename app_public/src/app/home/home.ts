@@ -6,10 +6,10 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   template: `
-    <div class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-xl w-full max-w-lg">
-      <h2 class="text-5xl font-extrabold text-indigo-700 mb-4">RouteFinder Welcome</h2>
+    <div class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow-xl">
+      <h2 class="text-5xl font-extrabold text-indigo-700 mb-4">Welcome to SmartBus Tracker</h2>
       <p class="text-xl text-gray-600 mb-8 max-w-lg text-center">
-        Your journey to efficient route searching starts here.
+        Track buses, find routes between locations, and read reviews from passengers.
       </p>
       <button 
         [routerLink]="['/search']"

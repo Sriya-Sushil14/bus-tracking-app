@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home';
 import { SearchComponent } from './search/search'; 
 import { FindBrComponent } from './findbr/findbr'; 
 import { FindBnComponent } from './findbn/findbn'; 
+import { ReviewComponent } from './review/review';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
   
   // 4. Find by Number Page
   { path: 'find-by-number', component: FindBnComponent, title: 'Search by Number' },
+    { path: 'reviews', component: ReviewComponent },
   
   // Optional: Wildcard route for 404/Unknown path redirection
   { path: '**', redirectTo: '', pathMatch: 'full' }
