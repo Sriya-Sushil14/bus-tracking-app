@@ -1,5 +1,5 @@
-# Use Node.js 18 as base image
-FROM node:18-alpine
+# Use Node.js 20 as base image (required for Angular CLI)
+FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
@@ -8,18 +8,16 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Copy Angular app package.json and install frontend dependencies
-COPY app_public/package*.json ./app_public/
+# Copy all files first
+COPY . .
+
+# Install Angular dependencies and build
 WORKDIR /app/app_public
 RUN npm install
-
-# Build Angular application
-COPY app_public/ ./
 RUN npm run build
 
-# Go back to main directory and copy all files
+# Go back to main directory
 WORKDIR /app
-COPY . .
 
 # Expose port
 EXPOSE 3000

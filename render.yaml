@@ -3,15 +3,14 @@ services:
     name: bus-tracking-app
     env: node
     plan: free
+    runtime: node20
     buildCommand: |
+      npm install
       cd app_public
       npm install
       npm run build
       cd ..
-      npm install
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3000
